@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <mvc:annotation-driven/>
+
+    <context:component-scan base-package="com.baldur"/>
+    <mvc:resources mapping="/resources/**" location="/resources/"/>
+
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value=""/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <context:annotation-config/>
+    <!-- Service Implementations -->
+    <bean id="orderService" class="com.baldur.services.impl.OrderService"/>
+    <bean id="userService" class="com.baldur.services.impl.UserService"/>
+
+    <!-- DAO Implementation -->
+    <bean id="orderDAO" class="com.baldur.model.dao.impl.OrderDAO"/>
+    <bean id="userDAO" class="com.baldur.model.dao.impl.UserDAO"/>
+
+</beans>
